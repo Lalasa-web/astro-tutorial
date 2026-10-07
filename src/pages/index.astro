@@ -1,11 +1,177 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import LearningCard from "../components/LearningCard.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Home | My Astro Journey">
+  <section class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">MY ASTRO LEARNING JOURNEY</p>
+
+      <h1>Learning to build fast, modern websites with Astro.</h1>
+
+      <p class="hero-description">
+        I'm learning Astro step by step by building real projects,
+        experimenting with components, content collections, dynamic routes,
+        and more.
+      </p>
+
+      <div class="hero-actions">
+        <a class="primary-button" href="/learning">
+          Explore My Learning
+        </a>
+
+        <a class="secondary-button" href="/blog">
+          Read My Blog
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning-section">
+    <div class="section-heading">
+      <p class="eyebrow">WHAT I'VE LEARNED</p>
+
+      <h2>My Astro Learning Path</h2>
+
+      <p>
+        These are the concepts I've explored while learning Astro.
+      </p>
+    </div>
+
+    <div class="learning-grid">
+      <LearningCard
+        title="Astro Basics"
+        description="Understanding Astro projects, pages, components, and how Astro generates websites."
+      />
+
+      <LearningCard
+        title="Components"
+        description="Learning how reusable Astro components can be created and used throughout a website."
+      />
+
+      <LearningCard
+        title="Pages & Routing"
+        description="Creating pages and understanding how files inside the pages folder become website routes."
+      />
+
+      <LearningCard
+        title="CSS"
+        description="Working with global CSS, component-scoped CSS, responsive layouts, and website styling."
+      />
+
+      <LearningCard
+        title="Content Collections"
+        description="Organizing blog content using Astro content collections and schemas."
+      />
+
+      <LearningCard
+        title="Dynamic Routes"
+        description="Creating dynamic blog and tag pages using getStaticPaths()."
+      />
+
+      <LearningCard
+        title="Rendering Markdown"
+        description="Using Astro's render API to turn Markdown content into pages."
+      />
+
+      <LearningCard
+        title="RSS Feeds"
+        description="Creating an RSS feed so blog content can be distributed in a standard XML format."
+      />
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .hero {
+    padding: 5rem 0 6rem;
+  }
+
+  .hero-content {
+    max-width: 750px;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #64748b;
+  }
+
+  h1 {
+    max-width: 750px;
+    margin: 0;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-description {
+    max-width: 650px;
+    margin: 1.5rem 0 0;
+    font-size: 1.15rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .primary-button,
+  .secondary-button {
+    display: inline-block;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+  }
+
+  .primary-button {
+    background: #0f172a;
+    color: white;
+  }
+
+  .secondary-button {
+    border: 1px solid #cbd5e1;
+    background: white;
+    color: #0f172a;
+  }
+
+  .learning-section {
+    padding: 2rem 0 5rem;
+  }
+
+  .section-heading {
+    max-width: 650px;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-heading h2 {
+    margin: 0;
+    font-size: 2.2rem;
+  }
+
+  .learning-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 900px) {
+    .learning-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      padding: 3rem 0 4rem;
+    }
+
+    .learning-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

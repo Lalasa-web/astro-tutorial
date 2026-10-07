@@ -1,0 +1,109 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  tags: string[];
+  pubDate: Date;
+}
+
+const { title, description, slug, tags, pubDate } = Astro.props;
+---
+
+<article class="blog-card">
+  <div class="blog-card-content">
+    <p class="date">
+      {pubDate.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })}
+    </p>
+
+    <h2>
+      <a href={`/blog/${slug}`}>
+        {title}
+      </a>
+    </h2>
+
+    <p class="description">
+      {description}
+    </p>
+
+    <div class="tags">
+      {tags.map((tag) => (
+        <a href={`/blog/tags/${tag}`} class="tag">
+          #{tag}
+        </a>
+      ))}
+    </div>
+
+    <a class="read-more" href={`/blog/${slug}`}>
+      Read article →
+    </a>
+  </div>
+</article>
+
+<style>
+  .blog-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    background: white;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+  }
+
+  .blog-card-content {
+    padding: 1.5rem;
+  }
+
+  .date {
+    margin: 0 0 0.75rem;
+    font-size: 0.85rem;
+    color: #94a3b8;
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    font-size: 1.5rem;
+  }
+
+  h2 a {
+    color: #0f172a;
+  }
+
+  .description {
+    margin-bottom: 1.25rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .tag {
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 0.8rem;
+  }
+
+  .tag:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+  }
+
+  .read-more {
+    font-weight: 600;
+    color: #0f172a;
+  }
+</style>

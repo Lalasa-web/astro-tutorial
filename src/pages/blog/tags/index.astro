@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
+
+const tags = [...new Set(posts.flatMap((post) => post.data.tags))];
+---
+
+<h1>Blog Tags</h1>
+
+<ul>
+  {tags.map((tag) => (
+    <li>
+      <a href={`/blog/tags/${tag}`}>{tag}</a>
+    </li>
+  ))}
+</ul>

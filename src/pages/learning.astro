@@ -1,0 +1,466 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Counter from "../components/Counter.jsx";
+---
+
+<Layout title="Learning | My Astro Journey">
+  <section class="learning-header">
+    <p class="eyebrow">MY LEARNING</p>
+
+    <h1>What I've Learned with Astro</h1>
+
+    <p class="intro">
+      This page documents the Astro concepts I've learned while building
+      this website step by step.
+    </p>
+  </section>
+
+  <div class="learning-layout">
+    <aside class="sidebar">
+      <h2>Topics</h2>
+
+      <nav>
+        <a href="#basics">Astro Basics</a>
+        <a href="#components">Components</a>
+        <a href="#pages">Pages & Routing</a>
+        <a href="#css">CSS</a>
+        <a href="#assets">Assets</a>
+        <a href="#collections">Content Collections</a>
+        <a href="#dynamic-routes">Dynamic Routes</a>
+        <a href="#rendering">Rendering Markdown</a>
+        <a href="#tags">Tags</a>
+        <a href="#rss">RSS</a>
+      </nav>
+    </aside>
+
+    <main class="documentation">
+      <section id="basics">
+        <p class="topic-number">01</p>
+        <h2>Astro Basics</h2>
+
+        <p>
+          Astro is a web framework designed for building fast and modern
+          websites. An Astro project contains pages, components, layouts,
+          styles, assets, and other files.
+        </p>
+
+        <p>
+          One important thing I learned is that Astro can generate most of
+          the HTML on the server instead of sending unnecessary JavaScript
+          to the browser.
+        </p>
+      </section>
+
+      <section id="components">
+        <p class="topic-number">02</p>
+        <h2>Components</h2>
+
+        <p>
+          Components are reusable pieces of a website. Instead of writing
+          the same HTML again and again, I can create a component and use
+          it wherever I need it.
+        </p>
+
+        <pre><code>&lt;LearningCard
+  title="Astro Basics"
+  description="Learning the fundamentals of Astro."
+/&gt;</code></pre>
+
+        <p>
+          In this project, <code>LearningCard.astro</code> is a reusable
+          component used on the home page.
+        </p>
+      </section>
+
+      <section id="pages">
+        <p class="topic-number">03</p>
+        <h2>Pages & Routing</h2>
+
+        <p>
+          Astro uses file-based routing. Files inside the
+          <code>src/pages</code> directory automatically become routes.
+        </p>
+
+        <pre><code>src/pages/
+├── index.astro
+├── about.astro
+├── learning.astro
+└── blog.astro</code></pre>
+
+        <p>
+          For example, <code>about.astro</code> becomes the
+          <code>/about</code> page.
+        </p>
+      </section>
+
+      <section id="css">
+        <p class="topic-number">04</p>
+        <h2>Global CSS & Component CSS</h2>
+
+        <p>
+          I learned that Astro supports both global CSS and
+          component-scoped CSS.
+        </p>
+
+        <p>
+          Global CSS is useful for styles that should apply across the
+          entire website, such as typography, colors, navigation, and
+          general layout.
+        </p>
+
+        <p>
+          Component-scoped CSS is useful when a style belongs only to one
+          component or page.
+        </p>
+      </section>
+
+      <section id="assets">
+        <p class="topic-number">05</p>
+        <h2>Assets</h2>
+
+        <p>
+          Astro provides different ways to work with images and other
+          static files.
+        </p>
+
+        <p>
+          Files inside <code>public</code> can be referenced directly by
+          their URL, while files inside <code>src/assets</code> can be
+          processed and optimized by Astro.
+        </p>
+      </section>
+
+      <section id="collections">
+        <p class="topic-number">06</p>
+        <h2>Content Collections</h2>
+
+        <p>
+          Content collections help organize structured content such as
+          blog posts.
+        </p>
+
+        <p>
+          In this project, my Markdown blog posts are stored inside:
+        </p>
+
+        <pre><code>src/content/blog/</code></pre>
+
+        <p>
+          I also created a content schema to define the expected fields
+          such as title, description, tags, and publication date.
+        </p>
+      </section>
+
+      <section id="dynamic-routes">
+        <p class="topic-number">07</p>
+        <h2>Dynamic Routes</h2>
+
+        <p>
+          Dynamic routes allow one page to generate multiple URLs based on
+          data.
+        </p>
+
+        <p>
+          For example, the file:
+        </p>
+
+        <pre><code>src/pages/blog/[slug].astro</code></pre>
+
+        <p>
+          can generate pages such as:
+        </p>
+
+        <ul>
+          <li>/blog/learning-astro</li>
+          <li>/blog/my-first-website</li>
+          <li>/blog/understanding-components</li>
+        </ul>
+
+        <p>
+          I learned that <code>getStaticPaths()</code> is used to tell
+          Astro which dynamic pages should be generated.
+        </p>
+      </section>
+
+      <section id="rendering">
+        <p class="topic-number">08</p>
+        <h2>Rendering Markdown</h2>
+
+        <p>
+          Astro's content API provides a <code>render()</code> function
+          that can convert a Markdown content entry into renderable
+          content.
+        </p>
+
+        <pre><code>const &#123; Content &#125; = await render(post);</code></pre>
+
+        <p>
+          The resulting <code>Content</code> component can then be placed
+          inside the page.
+        </p>
+
+        <pre><code>&lt;Content /&gt;</code></pre>
+      </section>
+
+      <section id="tags">
+        <p class="topic-number">09</p>
+        <h2>Tags</h2>
+
+        <p>
+          I used the tags stored in each blog post to create tag pages.
+        </p>
+
+        <p>
+          For example, posts can have tags such as:
+        </p>
+
+        <ul>
+          <li>astro</li>
+          <li>web-development</li>
+          <li>components</li>
+        </ul>
+
+        <p>
+          Astro can use these tags to generate pages showing all posts
+          associated with a particular tag.
+        </p>
+      </section>
+
+      <section id="rss">
+        <p class="topic-number">10</p>
+        <h2>RSS Feeds</h2>
+
+        <p>
+          I also learned how to create an RSS feed for my blog.
+        </p>
+
+        <p>
+          My RSS feed is available at:
+        </p>
+
+        <pre><code>/rss.xml</code></pre>
+
+        <p>
+          The feed contains information about my blog posts, including
+          their titles, descriptions, dates, and links.
+        </p>
+      </section>
+    </main>
+  </div>
+  <section class="island-demo">
+  <h2>My First Astro Island</h2>
+
+  <p>
+    This counter is interactive because it runs as a client-side island.
+  </p>
+
+  <Counter client:load />
+</section>
+   <section class="island-demo">
+  <h2>Day & Night Mode</h2>
+
+  <p>
+    This button is a React component running as an Astro island.
+  </p>
+</section>
+</Layout>
+
+<style>
+  .learning-header {
+    max-width: 750px;
+    margin-bottom: 4rem;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #64748b;
+  }
+
+  .learning-header h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .intro {
+    max-width: 650px;
+    margin-top: 1.5rem;
+    font-size: 1.15rem;
+  }
+
+  .learning-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .sidebar h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  .sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0;
+  }
+
+  .sidebar nav a {
+    color: #64748b;
+    font-size: 0.95rem;
+  }
+
+  .sidebar nav a:hover {
+    color: #0f172a;
+  }
+
+  .documentation {
+    max-width: 750px;
+  }
+
+  .documentation section {
+    padding-bottom: 4rem;
+    margin-bottom: 4rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .documentation section:last-child {
+    margin-bottom: 0;
+  }
+
+  .topic-number {
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #94a3b8;
+  }
+
+  .documentation h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  .documentation p {
+    margin-bottom: 1rem;
+  }
+
+  .documentation ul {
+    padding-left: 1.5rem;
+    color: #64748b;
+  }
+
+  .documentation li {
+    margin-bottom: 0.4rem;
+  }
+
+  code {
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.25rem;
+    background: #e2e8f0;
+    color: #0f172a;
+    font-size: 0.9em;
+  }
+
+  pre {
+    margin: 1.5rem 0;
+    padding: 1.25rem;
+    overflow-x: auto;
+    border-radius: 0.75rem;
+    background: #0f172a;
+  }
+
+  pre code {
+    padding: 0;
+    background: transparent;
+    color: #e2e8f0;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 800px) {
+    .learning-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .sidebar {
+      position: static;
+    }
+
+    .sidebar nav {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .sidebar nav {
+      grid-template-columns: 1fr;
+    }
+
+    .documentation h2 {
+      font-size: 1.6rem;
+    }
+  }
+
+  .island-demo {
+  margin-top: 2rem;
+  padding: 2rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  background: white;
+}
+
+.island-demo h2 {
+  margin-top: 0;
+}
+
+.island-demo button {
+  padding: 0.7rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  background: #0f172a;
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.island-demo button:hover {
+  opacity: 0.9;
+}
+   
+  body.dark-mode .island-demo {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+body.dark-mode .island-demo button {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+body.dark-mode .documentation section {
+  border-color: #334155;
+}
+
+body.dark-mode .sidebar nav a {
+  color: #94a3b8;
+}
+
+body.dark-mode .sidebar nav a:hover {
+  color: white;
+}
+</style>

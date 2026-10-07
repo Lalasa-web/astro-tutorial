@@ -1,0 +1,33 @@
+---;
+const { name, course, age, image } = Astro.props;
+---
+
+<div class="student-card">
+  <img src={image.src} alt={name} />
+
+  <h2>{name}</h2>
+  <p>Age: {age}</p>
+  <p>Course: {course}</p>
+</div>
+
+<style>
+  .student-card {
+    width: 250px;
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  }
+
+  .student-card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 600px) {
+  .student-card {
+    width: 100%;
+  }
+}
+</style>

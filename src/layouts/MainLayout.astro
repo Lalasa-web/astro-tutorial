@@ -1,0 +1,25 @@
+---
+import Navbar from '../components/Navbar.astro';
+
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My astro website</title>
+</head>
+<body>
+    <Navbar/>
+
+    <main>
+        <slot/>
+    </main>
+
+    <footer>
+        <p>@ 2026 my astro website</p>
+    </footer>
+</body>
+</html>
